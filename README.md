@@ -51,6 +51,15 @@ Lógica testável em `assets/tool-math.mjs`; execute `node tests/tools.test.mjs`
 
 ## Música / MSA (primeira etapa)
 
-`/musica/msa/107-msa-bb/` apresenta o arquivo solicitado “107 - MSA - Bb.mscz”, exportado pelo MuseScore Studio 4.7.5. O original local não foi alterado. A página usa SVG vetorial para preservar a diagramação e disponibiliza MusicXML para intercâmbio; ainda não implementa reprodução nem renderização dinâmica do XML. Ambos os formatos ficam em `assets/music/107-msa-bb/`. A exportação contém uma página, uma parte (clarinete em Si♭) e 13 compassos. Créditos da partitura preservados na exportação.
+`/musica/msa/107-msa-bb/` apresenta o arquivo solicitado “107 - MSA - Bb.mscz”, exportado pelo MuseScore Studio 4.7.5. O original local não foi alterado. A página usa SVG vetorial para preservar a diagramação e disponibiliza MusicXML para intercâmbio; a reprodução usa áudio exportado pelo MuseScore e posições temporizadas da mesma fonte, sem renderização dinâmica do XML. Ambos os formatos ficam em `assets/music/107-msa-bb/`. A exportação contém uma página, uma parte (clarinete em Si♭) e 13 compassos. Créditos da partitura preservados na exportação.
 
 Para atualizar, exporte o mesmo original pelo MuseScore com `-o score.musicxml` e `-o score.svg`. O MuseScore numera as páginas SVG (`score-1.svg`). A apresentação e o catálogo estão em `music_pages.py`. Esta primeira partitura tem uma página; ao adicionar partituras maiores, inclua todas as páginas no gerador.
+
+
+### Reprodução com cursor
+
+`score.mp3` é a exportação do MuseScore com MS Basic (clarinete). `timing.json` contém os 172 segmentos com início em segundos e posição percentual sobre o SVG. Notas e pausas seguem `audio.currentTime`, inclusive ao pausar, avançar ou alterar a velocidade. O áudio inclui a cauda de reverberação após os 104 segundos da partitura. Não há autoplay.
+
+Para regenerar o mapa, exporte `musescore --score-media original.mscz` para JSON e execute `python scripts/score_timing.py media.json` (somente o objeto JSON, sem mensagens de inicialização do AppImage). Exporte o MP3 do mesmo original com `musescore -b 128 -o score.mp3 original.mscz`. Mantenha SVG, áudio e mapa provenientes da mesma versão do arquivo. Os dados de posição do MuseScore têm escala de 12× em relação ao SVG desta exportação; veja `src/notation/internal/positionswriter.cpp` no projeto MuseScore. O gerador rejeita arquivos com múltiplas páginas até que o leitor as suporte.
+
+Validação: `node tests/music.test.mjs`. O teste verifica limites de notas, retorno temporal, posições e mudanças de compasso. A primeira nota escrita Ré4 soa Dó4, respeitando a transposição de -2 semitons do MusicXML.

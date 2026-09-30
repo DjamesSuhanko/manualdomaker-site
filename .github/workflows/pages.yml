@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/tools.test.mjs
+      - run: node tests/music.test.mjs
       - run: pip install -r requirements.txt
       - uses: actions/configure-pages@v5
         id: pages
