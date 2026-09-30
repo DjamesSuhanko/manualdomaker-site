@@ -1,4 +1,6 @@
 Title: Da ideia à bancada: um novo caderno maker
+Category: Bastidores
+Description: Conheça o modelo de tutorial: leitura confortável, índice de seções e código pronto para copiar.
 
 Este é um **artigo demonstrativo**, criado para avaliar a leitura, os blocos de código e a navegação do novo site. Não é uma migração de um tutorial do acervo.
 

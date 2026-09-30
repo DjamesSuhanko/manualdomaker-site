@@ -26,10 +26,10 @@ Abra http://localhost:8000. Em produção o workflow define automaticamente o ca
 
 - `assets/style.css`: aparência e comportamento responsivo.
 - `content/articles.json`: seleção de links para o blog original. Os resumos foram redigidos para esta prévia; as ilustrações são abstratas, não fotografias dos projetos.
-- `content/*.md`: artigos locais. A primeira linha deve ser `Title: Título do artigo`, seguida de uma linha vazia. O nome do arquivo determina `/artigos/nome/`.
+- `content/*.md`: artigos locais. Comece com `Title: Título do artigo`, `Category: Assunto` e `Description: Resumo`, uma propriedade por linha, seguidas de uma linha vazia. O artigo entra automaticamente na página inicial, na busca e nos filtros. O nome do arquivo determina `/artigos/nome/`.
 - `build.py`: estrutura das páginas; suporta listas, tabelas, blocos de código e índice automático dos artigos.
 
-A busca na página inicial cobre somente os seis itens selecionados nesta prévia, não todo o acervo. O artigo demonstrativo não representa conteúdo previamente publicado pelo autor.
+A busca na página inicial cobre os seis links selecionados e os artigos locais nesta prévia, não todo o acervo. O artigo demonstrativo não representa conteúdo previamente publicado pelo autor.
 
 ## Migração futura (após aprovação)
 
