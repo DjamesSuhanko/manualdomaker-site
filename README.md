@@ -48,3 +48,9 @@ Não há CNAME, alteração de DNS, rastreamento ou migração automática neste
 As rotas originais `/toolbox/`, `/matrix/`, `/rgb-converter/` e `/resistor/` foram preservadas, relativas ao caminho do projeto no Pages. As ferramentas funcionam no navegador, sem backend. A matriz gera bitmap 8×12 e três palavras uint32_t; o conversor valida RGB24 e produz RGB565; resistores incluem multiplicadores dourado/prata e indicação exata da série E12.
 
 Lógica testável em `assets/tool-math.mjs`; execute `node tests/tools.test.mjs` (Node 20+). Interface em `assets/tools.js`, páginas em `tools_pages.py`. Referências de uso estão nas próprias ferramentas. Não foram testadas em hardware físico.
+
+## Música / MSA (primeira etapa)
+
+`/musica/msa/107-msa-bb/` apresenta o arquivo solicitado “107 - MSA - Bb.mscz”, exportado pelo MuseScore Studio 4.7.5. O original local não foi alterado. A página usa SVG vetorial para preservar a diagramação e disponibiliza MusicXML para intercâmbio; ainda não implementa reprodução nem renderização dinâmica do XML. Ambos os formatos ficam em `assets/music/107-msa-bb/`. A exportação contém uma página, uma parte (clarinete em Si♭) e 13 compassos. Créditos da partitura preservados na exportação.
+
+Para atualizar, exporte o mesmo original pelo MuseScore com `-o score.musicxml` e `-o score.svg`. O MuseScore numera as páginas SVG (`score-1.svg`). A apresentação e o catálogo estão em `music_pages.py`. Esta primeira partitura tem uma página; ao adicionar partituras maiores, inclua todas as páginas no gerador.
