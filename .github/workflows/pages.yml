@@ -21,6 +21,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/tools.test.mjs
       - run: pip install -r requirements.txt
       - uses: actions/configure-pages@v5
         id: pages

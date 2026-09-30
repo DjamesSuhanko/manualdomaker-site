@@ -42,3 +42,9 @@ A busca na página inicial cobre os seis links selecionados e os artigos locais 
 7. Após aprovação explícita, configurar o domínio, HTTPS e DNS. Validar o resultado antes de desativar a hospedagem anterior e manter possibilidade de retorno.
 
 Não há CNAME, alteração de DNS, rastreamento ou migração automática neste modelo. Todas as páginas da prévia usam `noindex` para evitar competição com o blog atual.
+
+## Ferramentas
+
+As rotas originais `/toolbox/`, `/matrix/`, `/rgb-converter/` e `/resistor/` foram preservadas, relativas ao caminho do projeto no Pages. As ferramentas funcionam no navegador, sem backend. A matriz gera bitmap 8×12 e três palavras uint32_t; o conversor valida RGB24 e produz RGB565; resistores incluem multiplicadores dourado/prata e indicação exata da série E12.
+
+Lógica testável em `assets/tool-math.mjs`; execute `node tests/tools.test.mjs` (Node 20+). Interface em `assets/tools.js`, páginas em `tools_pages.py`. Referências de uso estão nas próprias ferramentas. Não foram testadas em hardware físico.
